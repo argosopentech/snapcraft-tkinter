@@ -1,0 +1,24 @@
+name: snapcraft-tkinter
+base: core18 
+version: '1.0' 
+summary: Snapcraft Tkinter demo
+description: |
+  Demo of packaging a Tkinter app as a snap
+
+grade: devel
+confinement: devmode
+
+parts:
+  snapcraft-tkinter:
+    plugin: python
+    python-version: python3
+    source: .
+    stage-packages:
+      - python3-tk
+
+apps:
+  snapcraft-tkinter: 
+    command: bin/snapcraft-tkinter
+    environment:
+      TCL_LIBRARY: "$SNAP/usr/share/tcltk/tcl8.6"
+
