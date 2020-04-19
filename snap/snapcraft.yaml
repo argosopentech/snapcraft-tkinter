@@ -4,21 +4,23 @@ version: '1.0'
 summary: Snapcraft Tkinter demo
 description: |
   Demo of packaging a Tkinter app as a snap
+icon: snap/gui/icon.png
 
 grade: devel
 confinement: devmode
+
+layout:
+  /usr/share/tcltk:
+    bind: $SNAP/usr/share/tcltk
+
+apps:
+  snapcraft-tkinter: 
+    command: bin/snapcraft-tkinter
+    plugs: [home, x11, unity7]
 
 parts:
   snapcraft-tkinter:
     plugin: python
     python-version: python3
     source: .
-    stage-packages:
-      - python3-tk
-
-apps:
-  snapcraft-tkinter: 
-    command: bin/snapcraft-tkinter
-    environment:
-      TCL_LIBRARY: "$SNAP/usr/share/tcltk/tcl8.6"
-
+    stage-packages: [python3-tk, fontconfig-config, fonts-dejavu-extra]
