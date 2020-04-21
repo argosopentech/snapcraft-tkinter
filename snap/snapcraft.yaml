@@ -7,7 +7,7 @@ description: |
 icon: snap/gui/icon.png
 
 grade: devel
-confinement: devmode
+confinement: strict
 
 layout:
   /usr/share/tcltk:
