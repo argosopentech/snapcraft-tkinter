@@ -23,4 +23,4 @@ parts:
     plugin: python
     python-version: python3
     source: .
-    stage-packages: [python3-tk, fontconfig-config, fonts-dejavu-extra]
+    stage-packages: [python3-tk, fontconfig-config, fonts-dejavu-core, fonts-dejavu-extra]
