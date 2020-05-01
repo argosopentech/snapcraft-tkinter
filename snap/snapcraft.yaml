@@ -9,10 +9,6 @@ icon: snap/gui/icon.png
 grade: devel
 confinement: strict
 
-layout:
-  /usr/share/tcltk:
-    bind: $SNAP/usr/share/tcltk
-
 apps:
   snapcraft-tkinter: 
     adapter: full
