@@ -13,7 +13,14 @@ apps:
   snapcraft-tkinter: 
     adapter: full
     command: bin/snapcraft-tkinter
-    plugs: [home, x11, unity7]
+    plugs:
+      - desktop
+      - desktop-legacy
+      - gsettings
+      - opengl
+      - unity7
+      - wayland
+      - x11
     command-chain:
     - bin/debian-multiarch-triplet-provider-launch
     - bin/tcltk-launch
@@ -36,7 +43,20 @@ parts:
     python-version: python3
     source: .
     stage-packages:
-    - python3-tk
-    - fontconfig-config
-    - fonts-dejavu-core
-    - fonts-dejavu-extra
+      - python3-tk
+      - python3-pil.imagetk
+      - fontconfig-config
+      - fonts-dejavu-core
+      - fonts-dejavu-extra
+      - locales-all
+    after:
+      - desktop-glib-only
+
+  desktop-glib-only:
+    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
+    source-subdir: glib-only
+    plugin: make
+    build-packages:
+      - libglib2.0-dev
+    stage-packages:
+      - libglib2.0-bin
