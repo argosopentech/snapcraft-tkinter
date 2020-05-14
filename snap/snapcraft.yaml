@@ -13,6 +13,7 @@ apps:
   snapcraft-tkinter: 
     adapter: full
     command: bin/snapcraft-tkinter
+    extensions: [gnome-3-28]
     plugs:
       - desktop
       - desktop-legacy
@@ -49,14 +50,4 @@ parts:
       - fonts-dejavu-core
       - fonts-dejavu-extra
       - locales-all
-    after:
-      - desktop-glib-only
 
-  desktop-glib-only:
-    source: https://github.com/ubuntu/snapcraft-desktop-helpers.git
-    source-subdir: glib-only
-    plugin: make
-    build-packages:
-      - libglib2.0-dev
-    stage-packages:
-      - libglib2.0-bin
